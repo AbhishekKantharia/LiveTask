@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="product-list">
+        <div class="product" *ngFor="let product of products">
+          <div class="product-image">
+            <img [src]="product.image">
+          </div>
+          <div class="product-name">{{product.name}}</div>
+          <div class="product-price">{{product.price}}</div>
+          <div class="product-add-to-cart">
+            <button (click)="addToCart(product)">Add To Cart</button>
+          </div>
+        </div>
+        <div class="pagination">
+          <button (click)="previousPage()" *ngIf="currentPage > 1">Previous</button>
+          <button (click)="nextPage()">Next</button>
+        </div>
+      </div>
+      <div *ngFor="let product of products">
+        <h3>{{product.name}}</h3>
+        <img [src] = "product.imageUrl">
+        <p>Price: {{product.price}}</p>
+        <button (click) = "addToCart(product)">Add to Cart</button>
+      </div>
+      <ng-template #noProducts>
+        <p>No products found</p>
+      </ng-template>  
+</body>
+</html>
